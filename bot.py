@@ -72,4 +72,3 @@ app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, repondre))
 if __name__ == "__main__":
     print("🤖 Mini  Zetsu est en ligne !")
     app.run_polling()
-  by joyboy
