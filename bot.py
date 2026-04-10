@@ -3,7 +3,12 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
 
 # Ton token (on va le cacher après)
-TOKEN = "TON_TOKEN_ICI"  # Remplace par ton vrai token !
+# Au lieu de :
+# Au lieu de :
+TOKEN = "t.me/joyzet_bot"
+
+# Mets :
+TOKEN = os.environ.get("https://core.telegram.org/bots/api")
 
 # Commande /start
 async def start(update: Update, context):
