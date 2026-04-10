@@ -1,16 +1,8 @@
 import os
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
-
-# Ton token (on va le cacher après)
-# Au lieu de :
-# Au lieu de :
 TOKEN = "t.me/joyzet_bot"
-
-# Mets :
 TOKEN = os.environ.get("https://core.telegram.org/bots/api")
-
-# Commande /start
 async def start(update: Update, context):
     await update.message.reply_text(
         "🔥 BIENVENUE SUR MINI ZETSU  ! 🔥\n\n"
@@ -22,8 +14,6 @@ async def start(update: Update, context):
         "/aide - Toutes les commandes\n\n"
         "✨ Bientôt disponible sur iOS et Android !"
     )
-
-# Commande /joy
 async def joy(update: Update, context):
     await update.message.reply_text(
         "🎬 Mini Zetsu\n\n"
@@ -31,8 +21,6 @@ async def joy(update: Update, context):
         "Like, commente et abonne-toi ❤️\n"
         "Rejoins la communauté dès maintenant ! 🚀"
     )
-
-# Commande /info
 async def info(update: Update, context):
     await update.message.reply_text(
         "📊 Mini Zetsu en chiffres :\n\n"
@@ -41,8 +29,6 @@ async def info(update: Update, context):
         "• Gratuit : Toujours !\n\n"
         "Plus d'infos bientôt... 🔥"
     )
-
-# Commande /contact
 async def contact(update: Update, context):
     await update.message.reply_text(
         "📧 Nous contacter :\n\n"
@@ -51,8 +37,6 @@ async def contact(update: Update, context):
         "Instagram : @joypurge_official\n\n"
         "💬 Réponse sous 24h !"
     )
-
-# Commande /aide
 async def aide(update: Update, context):
     await update.message.reply_text(
         "📋 LISTE DES COMMANDES :\n\n"
@@ -63,8 +47,6 @@ async def aide(update: Update, context):
         "/aide - Cette liste\n\n"
         "💡 Envoie n'importe quel message, je répondrai !"
     )
-
-# Réponse aux messages normaux
 async def repondre(update: Update, context):
     message = update.message.text.lower()
     
@@ -79,21 +61,14 @@ async def repondre(update: Update, context):
             "🤖 Je suis le bot officiel de zetsu  !\n"
             "Tape /aide pour voir les commandes."
         )
-
-# Configuration du bot
 app = Application.builder().token(TOKEN).build()
-
-# Ajouter les commandes
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("joy", joy))
 app.add_handler(CommandHandler("info", info))
 app.add_handler(CommandHandler("contact", contact))
 app.add_handler(CommandHandler("aide", aide))
-
-# Ajouter la réponse aux messages normaux
+normaux
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, repondre))
-
-# Démarrer
 if __name__ == "__main__":
     print("🤖 Mini  Zetsu est en ligne !")
     app.run_polling()
